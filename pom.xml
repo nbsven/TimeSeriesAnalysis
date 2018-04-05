@@ -5,7 +5,6 @@
   <modelVersion>4.0.0</modelVersion>
 
 
-
   <groupId>com.abra.timeseries</groupId>
   <artifactId>TimeSeriesAnalysis</artifactId>
   <packaging>pom</packaging>
@@ -34,6 +33,16 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>LATEST</version>
+    </dependency>
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>LATEST</version>
     </dependency>
   </dependencies>
 

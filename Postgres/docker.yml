@@ -11,5 +11,5 @@ services:
       env_file:
         - db_credentials.env
       volumes:
-        - /home/abra/IdeaProjects/TimeSeriesAnalysis/Postgres/db/timeseries/:/var/lib/postgresql
+        - /home/abra/IdeaProjects/TimeSeriesAnalysis/Postgres/db/timeseries:/var/lib/postgresql/data/timeseries
 #      restart: false
