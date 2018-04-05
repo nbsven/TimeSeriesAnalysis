@@ -7,18 +7,17 @@ import org.junit.Test;
 
 public class PostgresJdbcTest {
 
-  private String URL = "jdbc:postgresql://localhost:5433/postgres";
+  private String URL = "jdbc:postgresql://localhost:5433/test";
 
   @Test
   public void testJdbcConnection() throws ClassNotFoundException {
 
     Class.forName("org.postgresql.Driver");
-    try (Connection connection = DriverManager.getConnection(URL, "timeseries", "custom");
-        ) {
+    try (Connection connection = DriverManager.getConnection(URL, "timeseries", "custom")) {
 //      String sqlCreateTable = "INSERT INTO test.schema.students(name, id_group) VALUES(?,?)";
       Statement statement = connection.createStatement();
       statement.executeUpdate("CREATE SCHEMA IF NOT EXISTS test");
-      statement=connection.createStatement();
+      statement = connection.createStatement();
       statement.executeUpdate("CREATE TABLE IF NOT EXISTS test.students(\n"
           + "  \"name\" VARCHAR(255),\n"
           + "  \"id_group\" BIGINT\n"
@@ -26,7 +25,7 @@ public class PostgresJdbcTest {
 
       String sql = "INSERT INTO test.students(name, id_group) VALUES(?,?)";
       PreparedStatement ps = connection.prepareStatement(sql);
-      ps.setString(1,"Кукушкин");
+      ps.setString(1, "Кукушкин");
       ps.setInt(2, 851001);
       ps.executeUpdate();
 
