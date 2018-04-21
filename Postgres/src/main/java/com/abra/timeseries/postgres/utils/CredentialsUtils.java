@@ -1,4 +1,4 @@
-package com.abra.timeseries.utils;
+package com.abra.timeseries.postgres.utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
