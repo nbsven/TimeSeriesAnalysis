@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <groupId>com.abra.timeseries.exchange</groupId>
+  <groupId>com.abra.timeseries</groupId>
   <artifactId>Exchange</artifactId>
   <version>1.0-SNAPSHOT</version>
 
