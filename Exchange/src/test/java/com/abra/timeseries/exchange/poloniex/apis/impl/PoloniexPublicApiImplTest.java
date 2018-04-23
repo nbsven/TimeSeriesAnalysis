@@ -2,11 +2,11 @@ package com.abra.timeseries.exchange.poloniex.apis.impl;
 
 import org.junit.Test;
 
-public class PoloniexPublicAPIImplTest {
+public class PoloniexPublicApiImplTest {
 
   @Test
   public void return24hVolume() {
-    PoloniexPublicAPIImpl instance = PoloniexPublicAPIImpl.instance();
+    PoloniexPublicApiImpl instance = PoloniexPublicApiImpl.instance();
     System.out.println(instance.return24hVolume());
     instance.shutdown();
   }

@@ -1,6 +1,8 @@
 package com.abra.timeseries.exchange.poloniex.apis.impl;
 
-import com.abra.timeseries.exchange.poloniex.apis.PoloniexPublicAPI;
+import com.abra.timeseries.exchange.poloniex.Converters.Converter;
+import com.abra.timeseries.exchange.poloniex.Pairs.Exchange;
+import com.abra.timeseries.exchange.poloniex.apis.PublicApi;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,9 +13,9 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class PoloniexPublicAPIImpl implements PoloniexPublicAPI {
+public class PoloniexPublicApiImpl implements PublicApi {
 
-  private static final PoloniexPublicAPIImpl singleton = new PoloniexPublicAPIImpl();
+  private static final PoloniexPublicApiImpl singleton = new PoloniexPublicApiImpl();
 
   private static final String PREFIX = "https://poloniex.com/public?command=";
   private ExecutorService service = Executors.newSingleThreadExecutor();
@@ -25,7 +27,14 @@ public class PoloniexPublicAPIImpl implements PoloniexPublicAPI {
     }
   };
 
-  @Override
+  public static PoloniexPublicApiImpl instance() {
+    return singleton;
+  }
+
+  public void shutdown(){
+    service.shutdown();
+  }
+
   public String return24hVolume() {
     String result = "";
     try {
@@ -57,11 +66,8 @@ public class PoloniexPublicAPIImpl implements PoloniexPublicAPI {
     return result;
   }
 
-  public static PoloniexPublicAPIImpl instance() {
-    return singleton;
-  }
-
-  public void shutdown(){
-    service.shutdown();
+  @Override
+  public String getMarkets() {
+    return new Converter(Exchange.POLONIEX).markets(return24hVolume());
   }
 }
